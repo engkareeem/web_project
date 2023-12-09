@@ -17,20 +17,20 @@
 }
 
 body {
-  background-color: var(--color-bg);
+  background:radial-gradient(circle at 3% 25%, rgba(0, 40, 83, 1) 0%, rgba(4, 12, 24, 1) 25%);
   min-height: 100vh;
 }
 
-.blue-circle {
-  background:radial-gradient(circle at 3% 25%, rgba(0, 40, 83, 1) 0%, rgba(4, 12, 24, 1) 25%);
-  z-index: -1;
-  position: absolute;
-  height: 100vh;
-  width: 100vw;
-  top: 0;
-  left:0;
-
-}
+//.blue-circle {
+//  background:radial-gradient(circle at 3% 25%, rgba(0, 40, 83, 1) 0%, rgba(4, 12, 24, 1) 25%);
+//  z-index: -1;
+//  position: absolute;
+//  height: 100vh;
+//  width: 100vw;
+//  top: 0;
+//  left:0;
+//
+//}
 
 #carouselSpecialOffers {
   height: 55vh;

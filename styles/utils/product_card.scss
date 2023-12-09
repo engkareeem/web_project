@@ -1,12 +1,6 @@
 .card-item {
   $border-radius-amount: 10px;
 
-  display: flex;
-  flex-direction: column;
-  flex: 0 0 100%;
-  flex-basis: calc(100%/3 - 10px);
-
-  scroll-snap-align: start;
   position: relative;
   height: 100%;
   padding: 5px 5px;
