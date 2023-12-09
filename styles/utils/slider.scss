@@ -1,6 +1,6 @@
 .cards-slide-label {
   display: flex;
-  color: var(--color-text-secondary);
+  color: var(--text-secondary-color);
   width: 80%;
   margin: 0 auto 20px;
   justify-content: space-between;
@@ -10,6 +10,7 @@
     font-size: 2em;
     font-weight: 1000;
     border-bottom: 1px solid white;
+    color: var(--text-primary-color);
   }
 
   .see-more{
@@ -18,7 +19,7 @@
     margin:auto 10px;
     text-decoration: underline;
     text-decoration-color: grey;
-    color: grey;
+    color: var(--text-secondary-color);
     &:hover {
       font-weight: bolder;
       cursor: pointer;
@@ -53,14 +54,14 @@
   .arrow-right {
     right:0;
     text-align: right;
-    color: var(--color-text-primary);
-    background-image: linear-gradient(to right,transparent 40%,var(--color-footer));
+    color: var(--text-primary-color);
+    background-image: linear-gradient(to right,transparent 40%,var(--primary));
   }
   .arrow-left {
     left:0;
     text-align: left;
-    color: var(--color-text-primary);
-    background-image: linear-gradient(to left,transparent,var(--color-footer));
+    color: var(--text-primary-color);
+    background-image: linear-gradient(to left,transparent,var(--primary));
   }
   .cards-container {
 
@@ -91,18 +92,18 @@
 
     /* Track */
     &::-webkit-scrollbar-track {
-      background: var(--bg-color);
+      background: var(--primary);
     }
 
     /* Handle */
     &::-webkit-scrollbar-thumb {
-      background: var(--color-footer); // TODO: Needs new color variable
+      background: var(--secondary-dark); // TODO: Needs new color variable
       border-radius: 5px;
     }
 
     /* Handle on hover */
     &::-webkit-scrollbar-thumb:hover {
-      background-color: var(--color-blog); // TODO: Needs new color variable
+      background-color: var(--secondary); // TODO: Needs new color variable
     }
   }
 }
@@ -126,21 +127,6 @@
 }
 
 
-//
-//@media (max-width: 500px) {
-//  .cards-slide-container {
-//    overflow-x: scroll;
-//
-//    .card-item {
-//      flex-basis: calc(50% - 10px);
-//    }
-//
-//    .card-item:not(:last-child) {
-//      margin-right: 20px;
-//    }
-//
-//  }
-//}
 
 @media only screen and (max-width: 700px) {
 
