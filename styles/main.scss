@@ -4,9 +4,9 @@
 @import 'mixins';
 
 @import "navbar";
-@import "product_card";
-@import "slider";
-@import "grid_view";
+@import "utils/product_card";
+@import "utils/slider";
+@import "utils/grid_view";
 
 * {
   padding: 0;
