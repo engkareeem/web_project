@@ -7,6 +7,7 @@
 @import "utils/product_card";
 @import "utils/slider";
 @import "utils/grid_view";
+@import "auth/sign-in_login";
 
 * {
   padding: 0;
@@ -17,7 +18,7 @@
 }
 
 body {
-  background:radial-gradient(circle at 3% 25%, rgba(0, 40, 83, 1) 0%, rgba(4, 12, 24, 1) 25%);
+  background: radial-gradient(circle at 3% 25%, var(--primary) 0%, var(--primary-dark) 25%);
   min-height: 100vh;
 }
 
@@ -52,6 +53,9 @@ body {
   }
 
 }
+
+
+
 
 
 

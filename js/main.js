@@ -20,3 +20,8 @@ function cards_slide_left(event) {
     const card = container.getElementsByClassName('card-item');
     container.scrollLeft -= card[0].offsetWidth;
 }
+
+const loginModal = document.getElementById('login-modal')
+loginModal.addEventListener('shown.bs.modal', () => {
+    console.log("Opened the modal")
+})

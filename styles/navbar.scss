@@ -13,14 +13,14 @@
   #nav-links{
     flex: 1;
     .nav-item-link{
-      color: var(--color-text-not-active);
+      color: var(--text-secondary-color);
       text-decoration: none;
       font-weight: lighter;
       font-size: 16px;
       padding: 8px 16px;
       transition: color 0.4s;
       &.active, &:hover {
-        color: var(--color-text-primary);
+        color: var(--text-primary-color);
       }
     }
   }
@@ -36,7 +36,7 @@
         background: transparent;
       }
       &:last-of-type {
-        background-color: var(--color-button);
+        background-color: var(--secondary-dark);
         margin-right: 2vw;
 
       }
