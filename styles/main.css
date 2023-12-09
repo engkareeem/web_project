@@ -289,21 +289,21 @@ body {
 }
 
 #carouselSpecialOffers {
-  height: 40vh;
+  height: 55vh;
   justify-content: center;
   width: 80%;
   margin: 0 auto;
 }
 #carouselSpecialOffers .carousel-inner {
-  height: 40vh;
+  height: 100%;
 }
 #carouselSpecialOffers .carousel-inner .carousel-item {
   height: 100%;
 }
 #carouselSpecialOffers .carousel-inner .carousel-item img {
   width: 100%;
-  height: auto;
-  object-fit: contain;
+  height: 100%;
+  object-fit: fill;
 }
 
 /*# sourceMappingURL=main.css.map */
