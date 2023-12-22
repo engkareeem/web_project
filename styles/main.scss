@@ -18,7 +18,10 @@
 }
 
 body {
-  background: radial-gradient(circle at 3% 25%, var(--primary) 0%, var(--primary-dark) 25%);
+  background: radial-gradient(circle at 3% 25%, #0b0c10 0%, #070c1a 10%, #01102c 25%);
+          //linear-gradient(to right bottom, #0b0c10, #0c0f1c, #0b1228, #061533, #00173f);
+          //radial-gradient(circle at 3% 25%, var(--primary) 0%, var(--primary-dark) 25%);
+
   min-height: 100vh;
 }
 

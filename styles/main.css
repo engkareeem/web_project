@@ -1,12 +1,10 @@
 :root {
   --font-family: "Manrope", sans-serif;
-  --primary: #116466;
-  --primary-dark: #2C3531;
-  --secondary-dark: #D9B08C;
-  --secondary: #FFCB9A;
-  --accent: #D1E8E2;
+  --primary: #2c97c0;
+  --secondary: #19638b;
+  --accent: #1F2833;
   --text-primary-color: #F1F1F1;
-  --text-secondary-color: #AAA;
+  --text-secondary-color: #C5C6C7;
 }
 
 #nav {
@@ -26,7 +24,7 @@
   flex: 1;
 }
 #nav #nav-links .nav-item-link {
-  color: var(--text-secondary-color);
+  color: var(--text-primary-color);
   text-decoration: none;
   font-weight: lighter;
   font-size: 16px;
@@ -37,7 +35,7 @@
   color: var(--text-primary-color);
 }
 #nav #nav-buttons button {
-  color: var(--color-text-primary);
+  color: var(--text-primary-color);
   border: none;
   font-size: 16px;
   font-weight: lighter;
@@ -48,7 +46,7 @@
   background: transparent;
 }
 #nav #nav-buttons button:last-of-type {
-  background-color: var(--secondary-dark);
+  background-color: var(--secondary);
   margin-right: 2vw;
 }
 
@@ -304,7 +302,7 @@
   }
 }
 #login-modal .modal-content {
-  background-color: var(--primary-dark);
+  background-color: var(--accent);
   color: var(--text-primary-color);
 }
 #login-modal .modal-content .modal-header {
@@ -374,7 +372,7 @@
 #login-modal .modal-content .modal-body form button[type=submit] {
   margin: 2% 0 10% 0;
   border: none;
-  background-color: var(--secondary-dark);
+  background-color: var(--secondary);
 }
 #login-modal .modal-content .modal-body .medal-footer {
   display: flex;
@@ -383,7 +381,7 @@
   color: var(--text-secondary-color);
 }
 #login-modal .modal-content .modal-body .medal-footer .switch-to-signup {
-  color: var(--text-primary-color);
+  color: var(--primary);
   cursor: pointer;
   user-select: none;
 }
@@ -397,7 +395,7 @@
 }
 
 body {
-  background: radial-gradient(circle at 3% 25%, var(--primary) 0%, var(--primary-dark) 25%);
+  background: radial-gradient(circle at 3% 25%, #0b0c10 0%, #070c1a 10%, #01102c 25%);
   min-height: 100vh;
 }
 

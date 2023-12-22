@@ -1,7 +1,7 @@
 #login-modal{
 
   .modal-content {
-    background-color: var(--primary-dark);
+    background-color: var(--accent);
     color: var(--text-primary-color);
 
     .modal-header {
@@ -65,7 +65,7 @@
         button[type=submit] {
           margin: 2% 0 10% 0;
           border: none;
-          background-color: var(--secondary-dark);
+          background-color: var(--secondary);
         }
       }
 
@@ -76,7 +76,7 @@
         color: var(--text-secondary-color);
 
         .switch-to-signup {
-          color: var(--text-primary-color);
+          color: var(--primary);
           cursor: pointer;
           user-select: none;
         }
