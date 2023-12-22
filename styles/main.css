@@ -264,16 +264,23 @@
     display: block;
   }
 }
-.products-grid-view {
-  display: grid;
+.products-grid-view-container {
   width: 80%;
-  margin: 100px auto;
+  margin: auto;
+  box-shadow: 0 0 20px 2px color-mix(in srgb, var(--primary), transparent 80%);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.products-grid-view {
+  background-color: color-mix(in srgb, var(--primary), transparent 90%);
+  display: grid;
+  width: 100%;
   border: 1px solid var(--color-blog);
-  border-radius: 10px;
-  padding: 20px;
   box-sizing: border-box;
   overflow: auto;
   grid-template-columns: auto auto auto auto;
+  padding-top: 10px;
 }
 
 .products-grid-view .card-item {
@@ -284,6 +291,29 @@
 }
 .products-grid-view .card-item .actions .icon {
   font-size: 20px;
+}
+
+.filter-bar {
+  background-image: linear-gradient(to bottom, var(--primary), color-mix(in srgb, var(--primary), transparent 90%));
+  list-style-type: none;
+  overflow: hidden;
+  color: var(--text-primary-color);
+  margin: 0;
+  padding: 0;
+}
+
+.filter-bar li {
+  float: left;
+}
+
+.filter-bar li div {
+  padding: 16px 16px 20px 16px;
+}
+
+.filter-bar li div:hover {
+  display: block;
+  background-image: linear-gradient(to bottom, var(--secondary), color-mix(in srgb, var(--primary), transparent 90%));
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 700px) {
@@ -397,6 +427,27 @@
 body {
   background: radial-gradient(circle at 3% 25%, #0b0c10 0%, #070c1a 10%, #01102c 25%);
   min-height: 100vh;
+}
+
+/* Container */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #01102c;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--secondary);
 }
 
 #carouselSpecialOffers {
