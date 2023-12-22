@@ -14,6 +14,7 @@
 <body>
     <div class="blue-circle"></div>
     <div class="blue-circle"></div>
+
     <div id="nav">
         <a href="index.html"><img src="/src/logo-no-text.png" alt="" id="logo"></a>
         <div id="nav-links">
@@ -23,9 +24,10 @@
         </div>
         <div id="nav-buttons">
             <button type="button" data-bs-toggle="modal" data-bs-target="#login-modal">Log In</button>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#login-modal">Sign up</button>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#signup-modal">Sign up</button>
         </div>
     </div>
+
     <div id="carouselSpecialOffers" class="carousel slide  " data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselSpecialOffers" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -70,33 +72,33 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <span id="close-button" class="icon material-icons" data-bs-dismiss="modal">close</span>
+                    <span class="icon material-icons close-button" data-bs-dismiss="modal">close</span>
                 </div>
                 <div class="modal-body">
                     <div class="body-header">
-                        <span id="person-icon" class="icon material-icons">person</span>
-                        <span id="content-title">Sign-In</span>
+                        <span class="icon material-icons person-icon">person</span>
+                        <span class="content-title">Log-In</span>
                     </div>
 
                     <form>
                         <div class="mb-3">
-                            <label for="email-input" class="form-label">Email Address</label>
+                            <label for="signin:email-input" class="form-label">Email Address</label>
                             <div class="icon-text-field">
                                 <span class="icon material-icons text-field-icon">alternate_email</span>
-                                <input type="email" placeholder="Email" id="email-input" />
+                                <input type="email" placeholder="Email" id="signin:email-input" />
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="password-input" class="form-label">Password</label>
+                            <label for="signin:password-input" class="form-label">Password</label>
                             <div class="icon-text-field">
                                 <span class="icon material-icons text-field-icon">lock</span>
-                                <input type="password" placeholder="Password" id="password-input">
+                                <input type="password" placeholder="Password" id="signin:password-input">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                        <button type="submit" class="primary-btn">Submit</button>
                     </form>
                     <div class="medal-footer">
-                        Don't have an account? &nbsp <span class="switch-to-signup"> Sign Up</span>
+                        Don't have an account? &nbsp <span class="switch-to-signup" data-bs-toggle="modal" data-bs-target="#signup-modal"> Sign Up</span>
                     </div>
                 </div>
 
@@ -104,6 +106,57 @@
         </div>
     </div>
 
+    <div class="modal fade" tabindex="-1" id="signup-modal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="icon material-icons close-button" data-bs-dismiss="modal">close</span>
+                </div>
+                <div class="modal-body">
+                    <div class="body-header">
+                        <span  class="icon material-icons person-icon">person</span>
+                        <span class="content-title">Sign-Up</span>
+                    </div>
+
+                    <form>
+                        <div class="mb-3">
+                            <label for="signup:username-input" class="form-label">Username</label>
+                            <div class="icon-text-field">
+                                <span class="icon material-icons text-field-icon">badge</span>
+                                <input type="text" placeholder="Username" id="signup:username-input" />
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signup:email-input" class="form-label">Email Address</label>
+                            <div class="icon-text-field">
+                                <span class="icon material-icons text-field-icon">alternate_email</span>
+                                <input type="email" placeholder="Email" id="signup:email-input" />
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signup:password-input" class="form-label">Password</label>
+                            <div class="icon-text-field">
+                                <span class="icon material-icons text-field-icon">lock</span>
+                                <input type="password" placeholder="Password" id="signup:password-input">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signup:confirm-password-input" class="form-label">Confirm Password</label>
+                            <div class="icon-text-field">
+                                <span class="icon material-icons text-field-icon">lock</span>
+                                <input type="password" placeholder="Password" id="signup:confirm-password-input">
+                            </div>
+                        </div>
+                        <button type="submit" class="primary-btn">Submit</button>
+                    </form>
+                    <div class="medal-footer">
+                        Already have an account &nbsp <span class="switch-to-signin" data-bs-toggle="modal" data-bs-target="#login-modal"> Login</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 
 

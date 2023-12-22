@@ -1,6 +1,15 @@
 
-@mixin button-style {
-  // Define button styles here
+@mixin primary-btn {
+  border: none;
+  background-color: var(--secondary);
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: var(--text-primary-color);
+  transition: all 0.4s;
+  &:hover {
+    background-color: var(--primary);
+
+  }
 }
 
 

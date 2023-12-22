@@ -1,4 +1,4 @@
-#login-modal{
+#login-modal, #signup-modal{
 
   .modal-content {
     background-color: var(--accent);
@@ -8,7 +8,7 @@
     .modal-header {
       border-color: rgba(99,99,99, 0.3);
       border-width: 1px;
-      #close-button {
+      .close-button {
         color: var(--text-secondary-color);
         font-size: 26px;
         cursor: pointer;
@@ -26,7 +26,7 @@
         align-items: center;
         margin-bottom: 5%;
 
-        #person-icon {
+        .person-icon {
           display: inline-block;
           text-align: center;
           color: var(--primary);
@@ -37,7 +37,7 @@
           margin-right: 2%;
 
         }
-        #content-title {
+        .content-title {
           display: inline-block;
           font-size: 1.6em;
         }
@@ -59,14 +59,14 @@
             font-size: 1.2em;
           }
         }
-        input[type=password], input[type=email] {
+        input[type=password], input[type=email], input[type=text] {
           @include form-text-field;
           padding-left: 35px;
         }
-        button[type=submit] {
+        .primary-btn {
+          @include primary-btn;
           margin: 2% 0 10% 0;
-          border: none;
-          background-color: var(--secondary);
+          width: 100%;
         }
       }
 
@@ -76,7 +76,7 @@
         font-size: 0.8em;
         color: var(--text-secondary-color);
 
-        .switch-to-signup {
+        .switch-to-signup , .switch-to-signin{
           color: var(--primary);
           cursor: pointer;
           user-select: none;

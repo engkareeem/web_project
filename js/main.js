@@ -1,3 +1,4 @@
+
 let flag = false;
 
 function switch_theme() {
@@ -23,5 +24,16 @@ function cards_slide_left(event) {
 
 const loginModal = document.getElementById('login-modal')
 loginModal.addEventListener('shown.bs.modal', () => {
-    console.log("Opened the modal")
+    console.log("Opened the modal");
 })
+
+const navbar = document.getElementById('nav');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 0) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
