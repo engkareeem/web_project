@@ -30,7 +30,7 @@ loginModal.addEventListener('shown.bs.modal', () => {
 const navbar = document.getElementById('nav');
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 0) {
+    if (window.scrollY > 10) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
