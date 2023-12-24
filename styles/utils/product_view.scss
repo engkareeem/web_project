@@ -1,0 +1,95 @@
+.button-icon {
+  font-size: 4em;
+}
+
+.product-view-container {
+  width: 90%;
+  margin: 50px auto auto auto;
+
+  .information-container {
+    display: flex;
+    flex-direction: column;
+    float: left;
+    width: 65%;
+    height: 70vh;
+    background-color: color-mix(in srgb, var(--secondary), transparent 95%);
+    border-radius: 10px;
+    box-shadow: 0 0 15px 10px color-mix(in srgb, var(--primary), transparent 92%);
+
+    padding: 20px;
+    color: var(--text-primary-color);
+
+    .rating-container {
+      display: flex;
+      .icon {
+        color: gold;
+        font-size: 1.3em;
+      }
+      .reviews {
+        color: var(--text-secondary-color);
+        margin-left: 5px;
+      }
+    }
+
+    .description {
+      margin-top: 20px;
+      color: var(--text-primary-color);
+      font-size: 0.95em;
+      width: 70%;
+    }
+
+    .buying-container {
+      margin-top: auto;
+      display: flex;
+      width: 100%;
+      align-items: baseline;
+      .price-container {
+        .horizontal-spinner-container {
+          display: flex;
+          align-items: center;
+          .spinner-title {
+            display: flex;
+            color: var(--text-primary-color);
+            font-weight: bold;
+            margin-right: 5px;
+          }
+          .horizontal-spinner{
+            & > * {
+              height: 35px;
+            }
+            .spinner-value {
+              width: 70px;
+            }
+          }
+        }
+
+        .price-label {
+          margin-top: 5px;
+          color: var(--text-secondary-color);
+          font-size: 1.1em;
+          font-weight: bolder;
+        }
+      }
+      .actions-container {
+        display: flex;
+        gap: 10px;
+        margin-left: auto;
+      }
+    }
+  }
+
+  .image-container{
+    float: right;
+    width: 30%;
+    height: 70vh;
+    overflow: hidden;
+    background-color: color-mix(in srgb, var(--secondary), transparent 95%);
+    border-radius: 10px;
+    box-shadow: 0 0 15px 10px color-mix(in srgb, var(--primary), transparent 92%);
+    img {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

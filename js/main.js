@@ -1,6 +1,22 @@
 
 let flag = false;
 
+
+
+$(()=> {
+    const $spinner = $(".horizontal-spinner");
+    const $spinnerVal = $spinner.find(".spinner-value");
+    $spinner.find(".spinner-decrement").click(() => {
+        if($spinnerVal.val() > 0)
+            $spinnerVal.val(parseInt($spinnerVal.val()) - 1);
+    });
+    $spinner.find(".spinner-increment").click(() => {
+        $spinnerVal.val(parseInt($spinnerVal.val()) + 1);
+    });
+});
+
+
+
 function switch_theme() {
     if(flag) {
         document.documentElement.setAttribute('data-theme', 'light');
