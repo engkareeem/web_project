@@ -44,24 +44,6 @@
       width: 100%;
       align-items: baseline;
       .price-container {
-        .horizontal-spinner-container {
-          display: flex;
-          align-items: center;
-          .spinner-title {
-            display: flex;
-            color: var(--text-primary-color);
-            font-weight: bold;
-            margin-right: 5px;
-          }
-          .horizontal-spinner{
-            & > * {
-              height: 35px;
-            }
-            .spinner-value {
-              width: 70px;
-            }
-          }
-        }
 
         .price-label {
           margin-top: 5px;

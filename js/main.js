@@ -4,14 +4,15 @@ let flag = false;
 
 
 $(()=> {
-    const $spinner = $(".horizontal-spinner");
-    const $spinnerVal = $spinner.find(".spinner-value");
-    $spinner.find(".spinner-decrement").click(() => {
-        if($spinnerVal.val() > 0)
-            $spinnerVal.val(parseInt($spinnerVal.val()) - 1);
+    $(".horizontal-spinner .spinner-decrement").on('click',function () {
+        let spinnerValue = $(this).next();
+        if(spinnerValue.val() > 1) {
+            spinnerValue.val(parseInt(spinnerValue.val()) - 1);
+        }
     });
-    $spinner.find(".spinner-increment").click(() => {
-        $spinnerVal.val(parseInt($spinnerVal.val()) + 1);
+    $(".horizontal-spinner .spinner-increment").on('click',function () {
+        let spinnerValue = $(this).prev();
+        spinnerValue.val(parseInt(spinnerValue.val()) + 1);
     });
 });
 

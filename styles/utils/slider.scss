@@ -84,27 +84,27 @@
     padding: 10px 0;
 
 
-    //Scroll
-    /* Container */
-    &::-webkit-scrollbar {
-      height: 10px;
-    }
-
-    /* Track */
-    &::-webkit-scrollbar-track {
-      background: var(--primary);
-    }
-
-    /* Handle */
-    &::-webkit-scrollbar-thumb {
-      background: var(--secondary-dark); // TODO: Needs new color variable
-      border-radius: 5px;
-    }
-
-    /* Handle on hover */
-    &::-webkit-scrollbar-thumb:hover {
-      background-color: var(--secondary); // TODO: Needs new color variable
-    }
+    ////Scroll
+    ///* Container */
+    //&::-webkit-scrollbar {
+    //  height: 10px;
+    //}
+    //
+    ///* Track */
+    //&::-webkit-scrollbar-track {
+    //  background: var(--primary);
+    //}
+    //
+    ///* Handle */
+    //&::-webkit-scrollbar-thumb {
+    //  background: var(--secondary-dark); // TODO: Needs new color variable
+    //  border-radius: 5px;
+    //}
+    //
+    ///* Handle on hover */
+    //&::-webkit-scrollbar-thumb:hover {
+    //  background-color: var(--secondary); // TODO: Needs new color variable
+    //}
   }
 }
 
