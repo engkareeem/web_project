@@ -158,13 +158,13 @@
   }
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 701px) {
   .cards-slide-container {
     .cards-container {
       overflow-x: hidden;
     }
     .card-item {
-      flex-basis: calc(calc(100% / 3) - 20px);
+      flex-basis: calc(calc(100% / 4) - 20px);
     }
 
     .card-item:not(:last-child) {

@@ -57,7 +57,11 @@
 </div>
 
 <?php include './components/footer.php' ?>
-
+<style>
+    #footer {
+        width: 100%;
+    }
+</style>
 
 </body>
 </html>
