@@ -9,7 +9,12 @@
     <div id="nav-links">
         <a href="dashboard.php" class="nav-item-link">Dashboard</a>
         <a href="products-management.php" class="nav-item-link">Products</a>
-        <a href="#" class="nav-item-link">Users</a>
+        <a href="users-management.php" class="nav-item-link">Users</a>
+
+    </div>
+
+    <div id="nav-buttons">
+        <button type="button">Log out</button>
     </div>
 
 </div>
