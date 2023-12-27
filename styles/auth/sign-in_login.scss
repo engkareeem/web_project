@@ -48,6 +48,17 @@
           font-size: 0.9em;
           color: var(--text-primary-color);
         }
+
+        input[type=password], input[type=email], input[type=text] {
+          @include form-text-field;
+          padding-left: 35px;
+
+        }
+        .primary-btn {
+          @include primary-btn;
+          margin: 2% 0 10% 0;
+          width: 100%;
+        }
         .icon-text-field {
           position: relative;
           .text-field-icon {
@@ -58,15 +69,9 @@
             color: var(--text-secondary-color);
             font-size: 1.2em;
           }
-        }
-        input[type=password], input[type=email], input[type=text] {
-          @include form-text-field;
-          padding-left: 35px;
-        }
-        .primary-btn {
-          @include primary-btn;
-          margin: 2% 0 10% 0;
-          width: 100%;
+          &:focus {
+            color: var(--text-primary-color);
+          }
         }
       }
 

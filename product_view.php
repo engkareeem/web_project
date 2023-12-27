@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/main.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -16,65 +16,20 @@
 </head>
 <body>
 
-<div id="nav">
-    <a href="index.html"><img src="/src/logo-no-text.png" alt="" id="logo"></a>
-    <div id="nav-links">
-        <a href="#" class="nav-item-link active">Home</a>
-        <a href="#" class="nav-item-link">Catalog</a>
-        <a href="#" class="nav-item-link">Contact</a>
-    </div>
-    <div id="nav-buttons">
-        <button type="button" data-bs-toggle="modal" data-bs-target="#login-modal">Log In</button>
-        <button type="button" data-bs-toggle="modal" data-bs-target="#login-modal">Sign up</button>
-    </div>
-</div>
-
-
-<div class="modal fade" tabindex="-1" id="login-modal">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <span id="close-button" class="icon material-icons" data-bs-dismiss="modal">close</span>
-            </div>
-            <div class="modal-body">
-                <div class="body-header">
-                    <span id="person-icon" class="icon material-icons">person</span>
-                    <span id="content-title">Sign-In</span>
-                </div>
-
-                <form>
-                    <div class="mb-3">
-                        <label for="email-input" class="form-label">Email Address</label>
-                        <div class="icon-text-field">
-                            <span class="icon material-icons text-field-icon">alternate_email</span>
-                            <input type="email" placeholder="Email" id="email-input" />
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password-input" class="form-label">Password</label>
-                        <div class="icon-text-field">
-                            <span class="icon material-icons text-field-icon">lock</span>
-                            <input type="password" placeholder="Password" id="password-input">
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Submit</button>
-                </form>
-                <div class="medal-footer">
-                    Don't have an account? &nbsp <span class="switch-to-signup"> Sign Up</span>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
+<?php include './components/navbar.php' ?>
 
 <div class="product-view-container">
     <div class="image-container">
         <img src="https://cdn.originpc.com/img/compare-all/gaming-desktops/genesis-7000-series-system-image.png" alt="zbr">
     </div>
     <div class="information-container">
-        <h1>Title</h1>
+
+        <div class="header">
+            <h1>Title</h1>
+            <div class="header-actions">
+                <div class="icon material-icons">favorite_outline</div>
+            </div>
+        </div>
         <div class="rating-container">
             <div class="icon material-icons">star</div>
             <div class="icon material-icons">star</div>
@@ -100,6 +55,8 @@
 
     </div>
 </div>
+
+<?php include './components/footer.php' ?>
 
 
 </body>

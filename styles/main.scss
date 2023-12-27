@@ -4,13 +4,16 @@
 @import 'mixins';
 
 @import "navbar";
+@import "utils/number_spinner";
+
 @import "utils/product_card";
 @import "utils/slider";
 @import "utils/grid_view";
 @import "auth/sign-in_login";
 @import "pages/product_view";
-@import "utils/number_spinner";
 @import "pages/profile-page";
+@import "pages/dashboard-page";
+
 * {
   padding: 0;
   margin: 0;
@@ -66,22 +69,18 @@ body {
 
 #carouselSpecialOffers {
   height: 55vh;
-  justify-content: center;
-  background-color: color-mix(in srgb, var(--secondary), transparent 90%);
   width: 80%;
   margin: 0 auto;
   .carousel-inner {
     height: 100%;
-    display: flex;
     .carousel-item {
-      height: 100%;
+      height: 55vh;
       width: 100%;
       img{
-        background-color: black;
         height: 100%;
-        width: auto;
-        margin: auto;
-        object-fit: cover;
+        width: 100%;
+        margin: 0 auto;
+        object-fit: contain;
 
       }
     }
@@ -89,7 +88,29 @@ body {
 
 }
 
+@media only screen and (max-width: 700px) {
+  #carouselSpecialOffers {
+    height: 25vh;
+    width: 100%;
+    margin-bottom: 15px;
+    .carousel-inner {
+      height: 100%;
+      .carousel-item {
+        height: 25vh;
+        width: 100%;
+        img{
+          height: 100%;
+          width: 100%;
+          margin: 0 auto;
+          object-fit: contain;
 
+        }
+      }
+    }
+
+  }
+
+}
 
 
 

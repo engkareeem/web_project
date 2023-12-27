@@ -16,18 +16,8 @@
 </head>
 <body>
 
-<div id="nav">
-    <a href="index.html"><img src="/src/logo-no-text.png" alt="" id="logo"></a>
-    <div id="nav-links">
-        <a href="#" class="nav-item-link active">Home</a>
-        <a href="#" class="nav-item-link">Catalog</a>
-        <a href="#" class="nav-item-link">Contact</a>
-    </div>
-    <div id="nav-buttons">
-        <button type="button" data-bs-toggle="modal" data-bs-target="#login-modal">Log In</button>
-        <button type="button" data-bs-toggle="modal" data-bs-target="#signup-modal">Sign up</button>
-    </div>
-</div>
+<?php include './components/navbar.php' ?>
+
 
 <div class="cart-view-container">
     <div class="header"><div class="icon material-icons">shopping_cart</div>  Shopping Cart</div>
@@ -47,7 +37,12 @@
     </div>
 
 </div>
-
+<?php include './components/footer.php' ?>
+<style>
+    #footer {
+        width: 100%;
+    }
+</style>
 <script src="js/main.js"></script>
 
 </body>

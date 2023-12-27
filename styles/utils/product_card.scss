@@ -13,10 +13,20 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-out;
+
+
   &:hover {
     transform: scale(1.015);
-    box-shadow: 0 0 20px rgba(128, 128, 128, 0.44);
+    box-shadow: 0 0 8px 4px rgba(128, 128, 128, 0.15);
+  }
+  &:hover .header .price {
+    color: yellowgreen;
+
+  }
+  &:hover .header .title {
+    font-weight: bold;
+
   }
   .actions {
     display: flex;
@@ -28,6 +38,7 @@
       font-size: 14px;
       user-select: none;
       margin-bottom: 5px;
+      cursor: pointer;
       background-color: var(--secondary); // TODO: Needs new color variable
       color: white;
       padding: 5px;
@@ -56,19 +67,41 @@
     font-size: 14px;
     align-items: start;
     transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
     .title {
       color: var(--text-primary-color);
       font-weight: lighter;
       flex: 1;
       float: left;
       text-align: left;
+      cursor: pointer;
     }
+
     .price {
       color: var(--text-secondary-color);
       font-weight: bold;
       float: right;
       padding-left: 5px;
       text-align:right;
+      cursor: pointer;
+
     }
   }
+}
+
+@media only screen and (max-width: 700px) {
+  .card-item {
+    .actions {
+      display: none;
+    }
+    .title {
+      text-overflow: ellipsis;
+      font-size: 10px;
+    }
+    .price {
+      font-size: 10px;
+    }
+  }
+
 }

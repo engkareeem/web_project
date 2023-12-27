@@ -39,18 +39,6 @@ function cards_slide_left(event) {
     container.scrollLeft -= card[0].offsetWidth;
 }
 
-const loginModal = document.getElementById('login-modal')
-loginModal.addEventListener('shown.bs.modal', () => {
-    console.log("Opened the modal");
-})
 
-const navbar = document.getElementById('nav');
 
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 10) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
 

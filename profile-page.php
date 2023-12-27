@@ -4,23 +4,11 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <title>Profile</title>
 </head>
 <body>
-<div id="nav">
-    <a href="index.html"><img src="/src/logo-no-text.png" alt="" id="logo"></a>
-    <div id="nav-links">
-        <a href="#" class="nav-item-link active">Home</a>
-        <a href="#" class="nav-item-link">Catalog</a>
-        <a href="#" class="nav-item-link">Contact</a>
-    </div>
-    <div id="nav-buttons">
-        <button type="button" data-bs-toggle="modal" data-bs-target="#login-modal">Log In</button>
-        <button type="button" data-bs-toggle="modal" data-bs-target="#signup-modal">Sign up</button>
-    </div>
-</div>
+<?php include './components/navbar.php' ?>
+
 
 <div class="profile-body">
     <div class="info-card">
@@ -28,6 +16,7 @@
         <div class="username">Godvictory</div>
         <div class="email">shaer.nasrallah@gmail.com</div>
         <button class="edit-profile" type="button" data-bs-toggle="modal" data-bs-target="#edit-data-modal">Edit Profile</button>
+        <button class="logout-profile" type="button" >Log out</button>
     </div>
     <div class="data-card">
         <ul class="sub-nav">
@@ -37,12 +26,16 @@
         </ul>
         <div class="tabs-box">
             <div class="products-grid-view"></div>
-<!--            Todo:  Here to add the grid -->
         </div>
     </div>
 
 </div>
-
+<?php include './components/footer.php' ?>
+<style>
+    #footer {
+        width: 100%;
+    }
+</style>
 
 <script src="js/generateTest.js"></script>
 <script src="js/profile-page.js"></script>

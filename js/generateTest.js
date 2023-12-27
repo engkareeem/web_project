@@ -34,7 +34,7 @@ const grid_views = document.querySelectorAll(".products-grid-view");
 let spacer = "<div class=\"spacer\"></div>";
 let content = "";
 for(let i = 0; i < 23; i++) {
-    content += `<div class="card-item" onclick="location.href = 'product_view.html'">
+    content += `<div class="card-item" onclick="location.href = 'product_view.php'">
                 <div class="actions">
                     <div class="icon material-icons">favorite_outline</div>
                     <div class="add-to-cart-button icon material-icons-outlined">shopping_cart</div>
