@@ -35,6 +35,7 @@ let spacer = "<div class=\"spacer\"></div>";
 let content = "";
 for(let i = 0; i < 23; i++) {
     content += `<div class="card-item" onclick="location.href = 'product_view.php'">
+                <img src="https://cdn.originpc.com/img/compare-all/gaming-desktops/genesis-7000-series-system-image.png" alt="image"">
                 <div class="actions">
                     <div class="icon material-icons">favorite_outline</div>
                     <div class="add-to-cart-button icon material-icons-outlined">shopping_cart</div>
