@@ -71,12 +71,14 @@
     }
     .cart-item {
       display: flex;
-      height: 10vh;
+      height: 90px;
       .img-container {
         height: 100%;
+        width: 10%;
         img {
-          width: auto;
+          width: 100%;
           height: 100%;
+          object-fit: contain;
         }
       }
       .description {
@@ -92,7 +94,7 @@
           margin-top: 5px;
         }
       }
-      .horizontal-spinner-container {
+      .price-quantity-container {
         display: flex;
         align-items: center;
         margin-left: auto;

@@ -10,34 +10,35 @@
                     <span class="content-title">Sign-Up</span>
                 </div>
 
-                <form>
+                <form id="signup-form">
                     <div class="mb-3">
-                        <label for="signup:username-input" class="form-label">Username</label>
+                        <label for="username" class="form-label">Username</label>
                         <div class="icon-text-field">
                             <span class="icon material-icons text-field-icon">badge</span>
-                            <input type="text" placeholder="Username" id="signup:username-input" />
+                            <input type="text" placeholder="Username" name="username" />
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="signup:email-input" class="form-label">Email Address</label>
+                        <label for="email" class="form-label">Email Address</label>
                         <div class="icon-text-field">
                             <span class="icon material-icons text-field-icon">alternate_email</span>
-                            <input type="email" placeholder="Email" id="signup:email-input" />
+                            <input type="email" placeholder="Email" name="email" />
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="signup:password-input" class="form-label">Password</label>
+                        <label for="password" class="form-label">Password</label>
                         <div class="icon-text-field">
                             <span class="icon material-icons text-field-icon">lock</span>
-                            <input type="password" placeholder="Password" id="signup:password-input">
+                            <input type="password" placeholder="Password" name="password">
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="signup:confirm-password-input" class="form-label">Confirm Password</label>
+                        <label for="confirm-password" class="form-label">Confirm Password</label>
                         <div class="icon-text-field">
                             <span class="icon material-icons text-field-icon">lock</span>
-                            <input type="password" placeholder="Password" id="signup:confirm-password-input">
+                            <input type="password" placeholder="Confirm Password" name="confirm-password">
                         </div>
+                        <span class="response" style="color: #ff1f1f;font-size: 0.9em"></span>
                     </div>
                     <button type="submit" class="primary-btn">Submit</button>
                 </form>
@@ -50,10 +51,45 @@
     </div>
 </div>
 
-
+<script src="../js/jquery-3.7.1.min.js"></script>
+<!--<script src="../js/main.js"></script>-->
 <script>
     const signUpModal = document.getElementById('signup-modal')
     signUpModal.addEventListener('shown.bs.modal', () => {
 
     })
+    $(() => {
+        $(".response").text("");
+        $('#signup-modal').on('hidden.bs.modal', function () {
+            // Load up a new modal...
+            $('#login-modal').modal('show');
+        })
+        $('#signup-form').submit(function () {
+            event.preventDefault();
+            try {
+
+                $.ajax({
+                    url: 'api/register.php', // Replace with your server endpoint
+                    method: 'POST',
+                    data: new FormData(this),
+                    contentType: false,
+                    cache: false,
+                    processData:false,
+                    success: function(data) {
+                        $('#signup-modal').modal("hide");
+                        $('#login-modal').modal('show');
+
+                        $(".response").text("Register successful, You can login now!"); // TODO: Make it successful response (ex. green font)
+                    },
+                    error: function(error) {
+                        $(".response").text("Something goes wrong.. Please try again!");
+                        console.log('Error:', error);
+                    }
+                });
+            } catch (e) {
+                console.error("Error nigga: ", e);
+            }
+            event.preventDefault();
+        });
+    });
 </script>

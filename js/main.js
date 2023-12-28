@@ -1,20 +1,11 @@
 
-let flag = false;
+var flag = false;
 
 
 
-$(()=> {
-    $(".horizontal-spinner .spinner-decrement").on('click',function () {
-        let spinnerValue = $(this).next();
-        if(spinnerValue.val() > 1) {
-            spinnerValue.val(parseInt(spinnerValue.val()) - 1);
-        }
-    });
-    $(".horizontal-spinner .spinner-increment").on('click',function () {
-        let spinnerValue = $(this).prev();
-        spinnerValue.val(parseInt(spinnerValue.val()) + 1);
-    });
-});
+
+
+
 
 
 

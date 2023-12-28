@@ -16,18 +16,31 @@
 </head>
 <body>
 
-<?php include './components/navbar.php' ?>
+<?php
+include_once 'api/DBApi.php';
+include './components/navbar.php';
+if($_SERVER['REQUEST_METHOD'] !== 'GET' || !isset($_GET['product_id'])) {
+    echo "
+        <script>
+            $(() => {
+                location.href = \"index.php\";
+            });
+        </script>
+    ";
+}
+$product = DBApi::getProductByID($_GET['product_id']);
+?>
 
 <div class="product-view-container">
     <div class="image-container">
-        <img src="https://cdn.originpc.com/img/compare-all/gaming-desktops/genesis-7000-series-system-image.png" alt="zbr">
+        <img src="api/getImage.php?id=<?php echo $product->imageID?>" alt="image">
     </div>
     <div class="information-container">
 
         <div class="header">
-            <h1>Title</h1>
-            <div class="header-actions">
-                <div class="icon material-icons">favorite_outline</div>
+            <h1><?php echo $product->title ?></h1>
+            <div class="header-actions" >
+                <div class="icon material-icons" onclick="fav_product(this,'<?php echo $product->id?>')" >favorite_outline</div>
             </div>
         </div>
         <div class="rating-container">
@@ -39,22 +52,23 @@
             <div class="reviews">(69 Reviews)</div>
         </div>
         <div class="description">
-            Suspendisse finibus ultricies ultrices. Suspendisse ac purus eget nisi elementum sagittis. Suspendisse potenti. Curabitur quis sapien rutrum, vulputate enim in, commodo ex. Ut quis ipsum nec ex facilisis imperdiet facilisis in orci. Maecenas lacinia at ante at iaculis. Curabitur vel ultricies lacus. Nunc luctus massa at tellus fringilla, ac maximus ante fermentum. Praesent ac semper tellus. Cras rhoncus auctor sapien in sagittis.
+            <?php echo $product->description ?>
         </div>
         <div class="buying-container">
             <div class="price-container">
                 <div class="price-label">
-                    Price: 69.09$
+                    Price: <?php echo $product->price ?>$
                 </div>
             </div>
             <div class="actions-container">
-                <div id="add-to-cart-button" class="btn btn-outline-primary">Add to Cart</div>
-                <div id="buy-now-button" class="btn btn-primary">Buy Now</div>
+                <div id="add-to-cart-button" class="btn btn-outline-primary" onclick="shop_operation('add-cart','<?php echo $product->id?>')">Add to Cart</div>
+                <div id="buy-now-button" class="btn btn-primary" onclick="shop_operation('purchase','<?php echo $product->id?>')">Buy Now</div>
             </div>
         </div>
 
     </div>
 </div>
+<script src="js/product.js"></script>
 
 <?php include './components/footer.php' ?>
 <style>

@@ -2,6 +2,9 @@
 <?php
     include './components/signup-modal.php';
     include './components/login-modal.php';
+    include_once 'api/DBApi.php';
+$user = DBApi::ensureLogin();
+    $isLogged = $user->username !== null;
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -15,13 +18,22 @@
     <div id="nav-links">
         <a href="index.php" class="nav-item-link">Home</a>
         <a href="all_products.php" class="nav-item-link">Catalog</a>
-        <a href="profile-page.php" class="nav-item-link">Profile</a>
+        <?php
+        if($isLogged) {
+            echo '<a href="profile-page.php" class="nav-item-link">Profile</a>';
+            echo '<a href="shopping_cart.php" class="nav-item-link">Cart</a>';
+        }
+        ?>
+
     </div>
     <div id="nav-buttons">
-        <button type="button">Log out</button>
+        <?php
+            if(!$isLogged) {
+                echo '<button type="button" data-bs-toggle="modal" data-bs-target="#login-modal">Log In</button>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#signup-modal">Sign up</button>';
+            }
+        ?>
 
-        <button type="button" data-bs-toggle="modal" data-bs-target="#login-modal">Log In</button>
-        <button type="button" data-bs-toggle="modal" data-bs-target="#signup-modal">Sign up</button>
     </div>
 </div>
 

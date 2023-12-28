@@ -11,23 +11,25 @@
                     <span class="content-title">Log-In</span>
                 </div>
 
-                <form>
+                <form id="signin-form">
                     <div class="mb-3">
-                        <label for="signin:email-input" class="form-label">Email Address</label>
+                        <label for="username" class="form-label">Username</label>
                         <div class="icon-text-field">
-                            <span class="icon material-icons text-field-icon">alternate_email</span>
-                            <input type="email" placeholder="Email" id="signin:email-input" />
+                            <span class="icon material-icons text-field-icon">badge</span>
+                            <input type="text" placeholder="Username" name="username" />
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="signin:password-input" class="form-label">Password</label>
+                        <label for="password" class="form-label">Password</label>
                         <div class="icon-text-field">
                             <span class="icon material-icons text-field-icon">lock</span>
-                            <input type="password" placeholder="Password" id="signin:password-input">
+                            <input type="password" placeholder="Password" name="password">
                         </div>
+                        <span class="response" style="color: #ff1f1f;font-size: 0.9em"></span>
                     </div>
                     <button type="submit" class="primary-btn">Submit</button>
                 </form>
+
                 <div class="medal-footer">
                     Don't have an account? &nbsp <span class="switch-to-signup" data-bs-toggle="modal" data-bs-target="#signup-modal"> Sign Up</span>
                 </div>
@@ -36,10 +38,43 @@
         </div>
     </div>
 </div>
-
+<script src="../js/jquery-3.7.1.min.js"></script>
+<!--<script src="../js/main.js"></script>-->
 <script>
     const loginModal = document.getElementById('login-modal')
     loginModal.addEventListener('shown.bs.modal', () => {
-
     })
+    $(() => {
+        $(".response").text("");
+        $("#signin-form").submit(function () {
+            try {
+                $.ajax({
+                    url: 'api/login.php',
+                    method: 'POST',
+                    data: new FormData(this),
+                    contentType: false,
+                    cache: false,
+                    processData:false,
+                    success: function(data) {
+                        if(data === "success") {
+                            location.href = "index.php";
+                        } else {
+                            //TODO: Make the inputs error design. sorry for my england
+                            $(".response").text(data);
+                        }
+
+                    },
+                    error: function(error) {
+                        $(".response").text("Something goes wrong, please try again.");
+                        console.log('Error:', error);
+                    }
+                });
+            } catch (e) {
+                console.error("error nigga ", e);
+            }
+
+            event.preventDefault();
+        })
+    })
+
 </script>

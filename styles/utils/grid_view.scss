@@ -46,7 +46,7 @@
 .filter-bar li div {
   padding: 16px 16px 20px 16px;
 }
-.filter-bar li div:hover {
+.filter-bar li div:hover,.filter-bar li .active {
   display: block;
   background-image: linear-gradient(to bottom,var(--secondary),color-mix(in srgb, var(--primary), transparent 90%));
   cursor: pointer;

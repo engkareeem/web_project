@@ -8,13 +8,21 @@
     <link rel="stylesheet" href="./styles/main.css">
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/product_view.js"></script>
+    <script src="js/product.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!--   <script src="https://unpkg.com/@rive-app/canvas@2.7.0"></script>-->
 </head>
 <body>
+<?php
+include_once 'api/DBApi.php';
+require_once 'api/generate/products.php';
+include './components/navbar.php';
+
+?>
+
     <div class="blue-circle"></div>
     <div class="blue-circle"></div>
 
-    <?php include './components/navbar.php' ?>
 <!--carousel-fade-->
     <div id="carouselSpecialOffers" class="carousel slide " data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -55,14 +63,15 @@
         <div class="title">Top Selling</div>
         <a class="see-more" href="all_products.php">See more</a>
     </div>
-
-
-
     <div id="top_selling_slider" class="cards-slide-container" >
         <button onclick="cards_slide_right(event)" class="arrow arrow-right material-icons">arrow_forward</button>
         <button onclick="cards_slide_left(event)" class="arrow arrow-left material-icons">arrow_back</button>
         <div class="cards-container">
-
+            <?php
+            echo '<div class=\"spacer\"></div>';
+                generateProducts([],['numSold'=>-1]);
+            echo '<div class=\"spacer\"></div>';
+            ?>
         </div>
     </div>
 
@@ -74,7 +83,11 @@
         <button onclick="cards_slide_right(event)" class="arrow arrow-right material-icons">arrow_forward</button>
         <button onclick="cards_slide_left(event)" class="arrow arrow-left material-icons">arrow_back</button>
         <div class="cards-container">
-
+            <?php
+            echo '<div class=\"spacer\"></div>';
+                generateProducts([],['creationDate'=>-1]);
+            echo '<div class=\"spacer\"></div>';
+            ?>
         </div>
     </div>
 
@@ -86,14 +99,18 @@
         <button onclick="cards_slide_right(event)" class="arrow arrow-right material-icons">arrow_forward</button>
         <button onclick="cards_slide_left(event)" class="arrow arrow-left material-icons">arrow_back</button>
         <div class="cards-container">
-
+            <?php
+            echo '<div class=\"spacer\"></div>';
+                generateProducts([],['discount'=>-1]);
+            echo '<div class=\"spacer\"></div>';
+            ?>
         </div>
     </div>
 
     <?php include 'components/footer.php' ?>
 
 
-<script src="js/generateTest.js"></script>
+<!--<script src="js/generateTest.js"></script>-->
     <script src="js/main.js"></script>
 </body>
 </html>

@@ -14,24 +14,32 @@
 <body>
 <div class="blue-circle"></div>
 <div class="blue-circle"></div>
-<?php include './components/navbar.php' ?>
+<?php
+include_once 'api/DBApi.php';
+include_once 'api/generate/products.php';
+include './components/navbar.php';
+?>
 
 
 
 <div class="products-grid-view-container">
     <ul class="filter-bar">
-        <li><div>All</div></li>
+        <li><div class="active">All</div></li>
         <li><div>Components</div></li>
         <li><div>Laptop</div></li>
         <li><div>Computers</div></li>
         <li><div>Accessors</div></li>
     </ul>
-    <div class="products-grid-view"></div>
+    <div class="products-grid-view">
+        <?php
+            generateProducts();
+        ?>
+    </div>
 </div>
 <?php include './components/footer.php' ?>
 
 
-<script src="js/generateTest.js"></script>
+<!--<script src="js/generateTest.js"></script>-->
 <script src="js/main.js"></script>
 </body>
 </html>
