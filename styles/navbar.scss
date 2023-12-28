@@ -19,6 +19,10 @@
   #nav-links {
     flex: 1;
 
+    #cart-nav-btn {
+      display: none;
+      position: relative;
+    }
     .nav-item-link {
       color: var(--text-secondary-color);
       text-decoration: none;
@@ -31,10 +35,7 @@
         color: var(--text-primary-color);
       }
 
-      #cart-nab-btn {
-        display: none;
-        position: relative;
-      }
+
 
       .cart-count-Badge {
         display: none;
@@ -208,7 +209,7 @@
         right: -20px;
         top: 10px;
       }
-      .nav-item-link #cart-nab-btn {
+      .nav-item-link #cart-nav-btn {
         display: inline-block;
         position: relative;
 

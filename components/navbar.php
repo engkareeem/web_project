@@ -21,7 +21,7 @@ $user = DBApi::ensureLogin();
         <?php
         if($isLogged) {
             echo '<a href="profile-page.php" class="nav-item-link">Profile</a>';
-            echo '<a href="shopping_cart.php" class="nav-item-link" id="cart-nab-btn">Cart
+            echo '<a href="shopping_cart.php" class="nav-item-link" id="cart-nav-btn">Cart
             <span class="position-absolute start-100 translate-middle badge rounded-pill cart-count-Badge"> 9+ </span>
                 </a>';
         }
@@ -52,11 +52,6 @@ $user = DBApi::ensureLogin();
 
 <script>
     const navbar = document.getElementById('nav');
-    $("#nav").click(()=> {
-        notify("Scrolled", "been scrolling for ages", 1);
-
-    });
-
     window.addEventListener('scroll', () => {
         if (window.scrollY > 8) {
             navbar.classList.add('scrolled');
