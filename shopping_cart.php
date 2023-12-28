@@ -109,7 +109,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET') {
             <div class="discounts">Discounts: <span class="amount"><?php echo $totalItemsPrice - $totalPrice + $fees?></span>$</div>
             <div class="total-price">Total Price <span class="amount"><?php echo $totalPrice?></span>$</div>
         </div>
-        <button class="btn btn-primary" onclick="checkout('<?php echo $_GET['product_id'] ?>')" disabled="<?php empty($cart)?>">Checkout</button>
+        <button class="btn btn-primary" onclick="checkout('<?php echo $_GET['product_id'] ?>')" <?php echo empty($cart) ? 'disabled':''?>>Checkout</button>
 
     </div>
 

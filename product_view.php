@@ -62,7 +62,7 @@ $product = DBApi::getProductByID($_GET['product_id']);
             </div>
             <div class="actions-container">
                 <div id="add-to-cart-button" class="btn btn-outline-primary" onclick="shop_operation('add-cart','<?php echo $product->id?>')">Add to Cart</div>
-                <div id="buy-now-button" class="btn btn-primary" onclick="shop_operation('purchase','<?php echo $product->id?>')">Buy Now</div>
+                <div id="buy-now-button" class="btn btn-primary" onclick="location.href = 'shopping_cart.php?product_id=' + '<?php echo $product->id?>';">Buy Now</div>
             </div>
         </div>
 

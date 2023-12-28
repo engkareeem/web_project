@@ -90,7 +90,6 @@ function fav_product(element,id) {
         if(shop_operation('add-fav',id)) {
             element.innerText = "favorite";
         }
-
     } else {
         if(shop_operation('remove-fav',id)) {
             element.innerText = "favorite_outline";
