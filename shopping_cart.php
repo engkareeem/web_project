@@ -58,28 +58,28 @@ if($_SERVER['REQUEST_METHOD'] === 'GET') {
         if(empty($cart)) {
             echo "<div class='header' style='margin-left: 10px;'>Empty</div>";
         }
-            foreach($cart as $productId => $count) {
-                $product = DBApi::getProductByID($productId);
-                if($product->title === null) continue;
-                $price = $product->price * $count;
-                $totalItemsPrice += $price;
-                $totalPrice += $price - $price * $product->discount;
-                echo "
+        foreach($cart as $productId => $count) {
+            $product = DBApi::getProductByID($productId);
+            if($product->title === null) continue;
+            $price = $product->price * $count;
+            $totalItemsPrice += $price;
+            $totalPrice += $price - $price * $product->discount;
+            echo "
             <div class='cart-item' id='$product->id'>
     <div class='img-container'>
         <img src='api/getImage.php?id=$product->imageID' alt='image'>
     </div>
     <div class='description'>
         <div class='title'>$product->title</div>";
-                    if($product->discount > 0) {
-                        $price = $product->price - $product->price*$product->discount;
-                        echo " <div class='price'><s>Price: $product->price$</s><br>Price: $price$</div>";
-                    } else {
-                        echo " <div class='price'>Price: $product->price$</div>";
-                    }
+            if($product->discount > 0) {
+                $price = $product->price - $product->price*$product->discount;
+                echo " <div class='price'><s>Price: $product->price$</s><br>Price: $price$</div>";
+            } else {
+                echo " <div class='price'>Price: $product->price$</div>";
+            }
 
-                echo "</div>";
-                if(!$isBuyNow) echo "
+            echo "</div>";
+            if(!$isBuyNow) echo "
     <div class='price-quantity-container'>
         <div class='item-price'>
             <span class='item-price-amount' discount='$product->discount'>$product->price</span>$ x
@@ -94,10 +94,10 @@ if($_SERVER['REQUEST_METHOD'] === 'GET') {
         <div class='icon material-icons'>delete</div>
     </div>
      ";
-          echo "</div>";
+            echo "</div>";
 
 
-            }
+        }
         ?>
     </div>
 
@@ -109,10 +109,26 @@ if($_SERVER['REQUEST_METHOD'] === 'GET') {
             <div class="discounts">Discounts: <span class="amount"><?php echo $totalItemsPrice - $totalPrice + $fees?></span>$</div>
             <div class="total-price">Total Price <span class="amount"><?php echo $totalPrice?></span>$</div>
         </div>
-        <button class="btn btn-primary" onclick="checkout('<?php echo $_GET['product_id'] ?>')" <?php echo empty($cart) ? 'disabled':''?>>Checkout</button>
+        <button class="btn btn-primary" onclick="checkout('<?php echo $_GET['product_id'] ?? '' ?>')" <?php echo empty($cart) ? 'disabled':''?>>Checkout</button>
 
     </div>
 
+</div>
+
+<div class="modal fade" tabindex="-1" id="success-purchase-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Purchased Successfully</h5>
+            </div>
+            <div class="modal-body">
+                <p>Congratulations on your successful purchase! 🎉 <br>Thank you for choosing us.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="success-purchase-modal-close-btn">Done</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="js/product.js"></script>
@@ -123,8 +139,13 @@ if($_SERVER['REQUEST_METHOD'] === 'GET') {
 <?php include './components/footer.php' ?>
 <style>
     #footer {
+        position: absolute;
+        bottom: 0;
         width: 100%;
     }
+
+
+
 </style>
 
 </body>

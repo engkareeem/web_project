@@ -19,6 +19,11 @@
 
 </div>
 
+<div id="notification-section">
+
+</div>
+
+
 <script>
     window.addEventListener('scroll', () => {
         if (window.scrollY > 8) {
@@ -32,4 +37,60 @@
         path = path.substring(path.lastIndexOf("/")+1);
         $('#nav-links a[href*="'+path+'"]').addClass('active');
     });
+
+    /**
+     * This function shows notification in any page.
+     *
+     * @param {string} msgTitle Title of the notification.
+     * @param {string} msgBody Notification content.
+     * @param {String} msgType Type of the Notification: \
+     * -1 => Error. \
+     * 0 => Warning. \
+     * 1 => Success.
+     * @param {number} msgTimeout Time (ms) till notification get removed.
+     * @param {number} animationDuration Time (ms) for animation duration
+     * @return {null}
+     */
+    function notify(msgTitle, msgBody, msgType = 1, msgTimeout = 1000, animationDuration = 1000){
+        const notificationSection = $("#notification-section");
+        let notificationIcon, className;
+        switch (msgType){
+            case -1:
+                notificationIcon = 'warning'
+                className = 'error-notification';
+                break;
+            case 0:
+                notificationIcon = 'error'
+                className = 'warning-notification';
+                break;
+            case 1:
+                notificationIcon = 'check_circle'
+                className = 'success-notification';
+        }
+        const notificationInstance = `
+            <div class="notification ${className}">
+                <div class="notification-icon icon material-icons-round">
+                    ${notificationIcon}
+                </div>
+                <div class="notification-body">
+                    <div class="notification-title">${msgTitle}</div>
+                    <div class="notification-msg">${msgBody}</div>
+                </div>
+            </div>`;
+
+        const notification = $(notificationInstance);
+        notificationSection.append(notification);
+        notification.fadeOut(0);
+
+        notification.fadeIn(animationDuration, ()=> {
+            setTimeout(function() {
+                notification.fadeOut(animationDuration - animationDuration/4, () => {
+                    notification.remove();
+                });
+            }, msgTimeout);
+        });
+
+
+    }
+
 </script>

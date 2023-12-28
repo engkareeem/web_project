@@ -3,10 +3,21 @@
 function checkout(id) {
     if(id !== '') {
         shop_operation('purchase',id,1);
+
     } else {
         shop_operation('purchase-cart',id,1);
     }
+    console.log("Test");
+
+    const successModal = $("#success-purchase-modal");
+    successModal.modal("show");
+    successModal.on({
+        'hidden.bs.modal': function (){
+            window.location.href = 'profile-page.php';
+        }
+    })
 }
+
 function updateCheckout() {
     setTimeout(function() {
         let response;

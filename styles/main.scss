@@ -34,7 +34,13 @@ body {
   //radial-gradient(circle at 3% 25%, var(--primary) 0%, var(--primary-dark) 25%);
 
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 
+}
+
+#footer {
+  margin-top: auto;
 }
 //Scroll stuff
 /* Container */
