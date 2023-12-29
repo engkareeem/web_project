@@ -12,7 +12,7 @@ if($user->isAdmin === true) {
     <meta charset="UTF-8">
     <title>VectorZ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="css/main.css">
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/product_view.js"></script>
     <script src="js/product.js"></script>

@@ -75,7 +75,7 @@ function generateCustomProducts($products):void {
                         $product->title
                     </div>
                     <div class=\"price\">
-                        $price
+                        $product->price
                     </div>
                 </div>
             </div>";

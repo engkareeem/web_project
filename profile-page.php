@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="css/main.css">
     <title>Profile</title>
     <script src="js/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
