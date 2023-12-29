@@ -6,7 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./styles/main.css">
     <title>Products</title>
-
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css">
 </head>
 <body>
 <?php include './components/admin-navbar.php' ?>
@@ -54,7 +58,7 @@
 
             <div class="data-box">
                 <label for="image">Image <span style="font-size: 14px; font-weight: bold">(PNG, JPG, JPEG) </span>:</label>
-                <input type="file" id="productImage" name="file" accept=".png, .jpg, .jpeg" required>
+                <input type="file" id="productImage" name="file" accept=".png, .jpg, .jpeg, .webp" required>
             </div>
             <span class="response" style="color: #ff1f1f;font-size: 0.9em"></span>
 

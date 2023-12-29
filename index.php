@@ -89,7 +89,7 @@ include './components/navbar.php';
 
     <div class="cards-slide-label">
         <div class="title">Latest Offers</div>
-        <a class="see-more" href="#" target="_blank">See more</a>
+        <a class="see-more" href="all_products.php">See more</a>
     </div>
     <div id="latest_offers_slider" class="cards-slide-container" >
         <button onclick="cards_slide_right(event)" class="arrow arrow-right fa-sharp fa-arrow-right"></button>
@@ -105,7 +105,7 @@ include './components/navbar.php';
 
     <div class="cards-slide-label">
         <div class="title">Best Deals</div>
-        <a class="see-more" href="#" target="_blank">See more</a>
+        <a class="see-more" href="all_products.php">See more</a>
     </div>
     <div id="best_deals_slider" class="cards-slide-container" >
         <button onclick="cards_slide_right(event)" class="arrow arrow-right fa-sharp fa-arrow-right"></button>

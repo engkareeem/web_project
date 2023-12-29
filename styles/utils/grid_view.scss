@@ -38,15 +38,25 @@
   color: var(--text-primary-color);
   margin: 0;
   padding: 0;
-
+  width: 100%;
+  height: 50px;
+  float: left;
+  #searchBar {
+    float: right;
+    width: 200px;
+    height: 100%;
+    background-color: transparent;
+    border: 1px solid var(--primary);
+    padding: 10px
+  }
 }
-.filter-bar li {
+.filter-bar div {
   float: left;
 }
-.filter-bar li div {
+.filter-bar div {
   padding: 16px 16px 20px 16px;
 }
-.filter-bar li div:hover,.filter-bar li .active {
+.filter-bar div:hover,.filter-bar .active {
   display: block;
   background-image: linear-gradient(to bottom,var(--secondary),color-mix(in srgb, var(--primary), transparent 90%));
   cursor: pointer;

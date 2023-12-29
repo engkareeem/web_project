@@ -17,6 +17,15 @@ function generateProducts($filter=[],$order=[]):void {
             $fav = in_array($product->_id,iterator_to_array($user->favoritesList)) ? 'fa-solid':'fa-regular';
             $shCart = array_key_exists((string)$product->_id,$cart) ? 'fa-solid':'fa-regular';
         }
+        global $price;
+
+        if($product->discount > 0) {
+            $discount = $product->price - $product->price*$product->discount/100;
+            $price = "<s>$product->price$</s><br>
+                        $discount$";
+        } else {
+            $price = $product->price.'$';
+        }
         $content .= "<div class=\"card-item\" onclick=\"location.href = 'product_view.php?product_id=$product->_id'\">
                 <img src=\"api/getImage.php?id={$product->imageID}\" alt=\"image\">
                 <div class=\"actions\">
@@ -30,7 +39,7 @@ function generateProducts($filter=[],$order=[]):void {
      
                     </div>
                     <div class=\"price\">
-                        $product->price$
+                        $price$
                     </div>
                 </div>
             </div>";
@@ -45,12 +54,20 @@ function generateProducts($filter=[],$order=[]):void {
 function generateCustomProducts($products):void {
 
     foreach($products as $productID) {
+        $user = DBApi::ensureLogin();
         $product = DBApi::getProductByID($productID);
+        $fav='fa-regular';
+        $shCart = 'fa-regular';
+        $cart = DBApi::getCart();
+        if($user->username !== null) {
+            $fav = in_array($product->_id,iterator_to_array($user->favoritesList)) ? 'fa-solid':'fa-regular';
+            $shCart = array_key_exists((string)$product->_id,$cart) ? 'fa-solid':'fa-regular';
+        }
         echo "<div class=\"card-item\" onclick=\"location.href = 'product_view.php?product_id=$productID'\">
                 <img src=\"api/getImage.php?id={$product->imageID}\" alt=\"image\">
                 <div class=\"actions\">
-                    <div class=\"icon material-icons\" onclick='fav_product(this,\"{$productID}\")'>favorite_outline</div>
-                    <div class=\"add-to-cart-button icon material-icons-outlined\" onclick='cart_product(this,\"$productID\")'>shopping_cart</div>
+                    <div class=\"icon $fav fa-heart\" onclick='fav_product(this,\"{$product->_id}\")'></div>
+                    <div class=\"add-to-cart-button icon $shCart fa-cart-shopping\" onclick='cart_product(this,\"$product->_id\")'></div>
                     
                 </div>
                 <div class=\"header\">
@@ -58,7 +75,7 @@ function generateCustomProducts($products):void {
                         $product->title
                     </div>
                     <div class=\"price\">
-                        $product->price$
+                        $price
                     </div>
                 </div>
             </div>";

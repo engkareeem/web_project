@@ -10,7 +10,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo 'Please enter the password';
         exit;
     }
-    $username = htmlspecialchars(trim($_POST['username']));
+    $username = htmlspecialchars(strtolower(trim($_POST['username'])));
     $password = htmlspecialchars(trim($_POST['password']));
 
     $response = DBApi::userLogin($username,$password);

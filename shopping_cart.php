@@ -77,7 +77,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET') {
     <div class='description'>
         <div class='title'>$product->title</div>";
             if($product->discount > 0) {
-                $price = $product->price - $product->price*$product->discount;
+                $price = $product->price - $product->price*$product->discount/100;
                 echo " <div class='price'><s>Price: $product->price$</s><br>Price: $price$</div>";
             } else {
                 echo " <div class='price'>Price: $product->price$</div>";
@@ -142,8 +142,6 @@ if($_SERVER['REQUEST_METHOD'] === 'GET') {
 <?php include './components/footer.php' ?>
 <style>
     #footer {
-        position: absolute;
-        bottom: 0;
         width: 100%;
     }
 

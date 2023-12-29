@@ -26,7 +26,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['type'])) {
     $imageID = -1;
 
     if(strlen($title) < 3 || strlen($title) > 30) {
-        echo 'username must be shorter than 30 and longer than 3 characters';
+        echo 'Title must be shorter than 30 and longer than 3 characters';
         exit;
     }
     if(!is_numeric($price) || $price < 1) {
