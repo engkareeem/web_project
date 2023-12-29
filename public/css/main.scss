@@ -4,17 +4,17 @@
 @import 'mixins';
 
 @import "navbar";
-@import "utils/number_spinner";
+@import "utils/number_spinner.css";
 
 @import "utils/product_card";
 @import "utils/slider";
 @import "utils/grid_view";
 @import "auth/sign-in_login";
-@import "pages/product_view";
+@import "pages/product_view.css";
 @import "pages/profile-page";
 @import "pages/dashboard-page";
 @import "pages/products-mgm";
-@import "pages/users-mgm";
+@import "pages/users-mgm.css";
 
 * {
   padding: 0;
