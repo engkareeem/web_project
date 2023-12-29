@@ -1,7 +1,7 @@
 <?php
 require_once 'DBApi.php';
 if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['type'], $_POST['product_id']) && !empty($_COOKIE['userId'])) {
-    $response = "Bad Request44";
+    $response = "Bad Request";
     if($_POST['type'] === 'add-fav') {
         $response = DBApi::addProductToFav($_POST['product_id'],$_COOKIE['userId'])->name;
     } else if($_POST['type']==='remove-fav') {
@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['type'], $_POST['produc
             if($product->title == null) continue;
             $price = $product->price * $count;
             $totalItemsPrice += $price;
-            $totalPrice += $price - $price * $product->discount;
+            $totalPrice += $price - $price * ($product->discount/100);
         }
         $response = $totalItemsPrice . ';' . $totalPrice;
     }

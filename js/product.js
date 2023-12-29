@@ -1,5 +1,36 @@
 
 
+function changeFilter(element,filter) {
+    if(element.classList.contains('active')) return;
+    let activeElement = document.querySelector(".filter-bar .active");
+    activeElement.classList.remove("active");
+    element.classList.add("active");
+    let content;
+    $.ajax({
+        url: 'api/generate/products.php',
+        method: 'POST',
+        data: {
+            filter: filter,
+        },
+        async: false,
+        success: function(data) {
+            content = data;
+        },
+        error: function(error) {
+            console.log('Error:', error);
+            content = 'Bad Request';
+        }
+    });
+    if(content !== 'Bad Request') {
+        let container = document.getElementById('products-grid-view');
+        if(content.length <= 0) {
+            content = '<h1 style="color:white;">Empty</h1>';
+        }
+        container.innerHTML = content;
+    }
+
+}
+
 function checkout(id) {
     if(id !== '') {
         shop_operation('purchase',id,1);
@@ -17,7 +48,18 @@ function checkout(id) {
         }
     })
 }
+function updateCartCount() {
+    let cartCount = 0;
+    for(let cookie of document.cookie.split(';')) {
+        if(cookie.trim().startsWith("cart_")) {
+            cartCount+=1;
 
+        }
+    }
+    $('.cart-count-Badge').each(function () {
+        $(this).html(cartCount > 9 ? '9+':cartCount);
+    });
+}
 function updateCheckout() {
     setTimeout(function() {
         let response;
@@ -75,7 +117,7 @@ $(()=> {
     });
 });
 function shop_operation(type,id,count = 1) {
-    let response = null
+    var response;
     $.ajax({
         url: 'api/UserShop.php',
         method: 'POST',
@@ -84,6 +126,7 @@ function shop_operation(type,id,count = 1) {
             product_id: id,
             count: count,
         },
+        async: false,
         success: function(data) {
             response = data;
             console.log(data);
@@ -97,27 +140,33 @@ function shop_operation(type,id,count = 1) {
 }
 function fav_product(element,id) {
     event.stopPropagation();
-    if(element.innerText === "favorite_outline") {
+    if(element.classList.contains("fa-regular")) {
         if(shop_operation('add-fav',id)) {
-            element.innerText = "favorite";
+            element.classList.remove("fa-regular");
+            element.classList.add("fa-solid");
+            updateCartCount();
         }
     } else {
         if(shop_operation('remove-fav',id)) {
-            element.innerText = "favorite_outline";
+            element.classList.add("fa-regular");
+            element.classList.remove("fa-solid");
+            updateCartCount();
         }
     }
 }
 function cart_product(element,id,count= 1) {
     event.stopPropagation();
-    if(element.classList.contains("material-icons-outlined")) {
+    if(element.classList.contains("fa-regular")) {
         if(shop_operation('add-cart',id,count)) {
-            element.classList.remove("material-icons-outlined");
-            element.classList.add("material-icons");
+            element.classList.remove("fa-regular");
+            element.classList.add("fa-solid");
+            updateCartCount();
         }
     } else {
         if(shop_operation('remove-cart',id,count)) {
-            element.classList.add("material-icons-outlined");
-            element.classList.remove("material-icons");
+            element.classList.add("fa-regular");
+            element.classList.remove("fa-solid");
+            updateCartCount();
         }
     }
 }

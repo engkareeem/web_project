@@ -73,11 +73,21 @@ class DBApi {
             return APIResponse::ERROR;
         }
     }
-
+    public static function getUsersCount($isAdmin=false): int|APIResponse {
+        try {
+            return self::getUsersCollection()->countDocuments(['isAdmin'=>$isAdmin]);
+        } catch (Exception $e) {
+            return APIResponse::ERROR;
+        }
+    }
+    public static function getAllUsers($filter=[],$order = []): array{ // 1 ascending -1 descending
+        $cursor = self::getUsersCollection()->find($filter,['sort' => $order]);
+        return iterator_to_array($cursor);
+    }
     /*                Product                         */
 
-    public static function addProduct($title, $description, $price, $category, $imageID, $stock): APIResponse {
-        $product = new Product($title,$description,$price,$category,$imageID,time(),0, $stock, 0);
+    public static function addProduct($title, $description, $price, $category, $imageID, $stock,$discount): APIResponse {
+        $product = new Product($title,$description,$price,$category,$imageID,time(),$discount, $stock, 0);
         $insertResult = self::getProductsCollection()->insertOne($product->getJson());
         return $insertResult->getInsertedCount() > 0 ? APIResponse::SUCCESSFUL:APIResponse::ERROR;
     }
@@ -89,21 +99,21 @@ class DBApi {
         }
         return $product;
     }
-    public static function getAllProducts($filter,$order = []): array{ // 1 ascending -1 descending
+    public static function getAllProducts($filter=[],$order = []): array{ // 1 ascending -1 descending
         $cursor = self::getProductsCollection()->find($filter,['sort' => $order]);
         return iterator_to_array($cursor);
     }
     public static function updateProduct($product): APIResponse {
         try {
-            self::getProductsCollection()->updateOne(['_id'=>$product->id],['$set' => $product->getJson()]);
+            self::getProductsCollection()->updateOne(['_id'=> new \MongoDB\BSON\ObjectId($product->id)],['$set' => $product->getJson()]);
             return APIResponse::SUCCESSFUL;
         } catch (Exception $e) {
             return APIResponse::ERROR;
         }
     }
-    public static function removeProduct($product): APIResponse {
+    public static function removeProduct($productId): APIResponse {
         try {
-            $deleteResult = self::getProductsCollection()->deleteOne(['_id' => new MongoDB\BSON\ObjectId($product->id)]);
+            $deleteResult = self::getProductsCollection()->deleteOne(['_id' => new MongoDB\BSON\ObjectId($productId)]);
             return $deleteResult->getDeletedCount() > 0 ? APIResponse::SUCCESSFUL : APIResponse::NOT_EXIST;
         } catch (Exception $e) {
             return APIResponse::ERROR;

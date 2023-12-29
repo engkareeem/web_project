@@ -28,14 +28,14 @@
 
 
             <div class="data-box">
-                <label for="dataCreated">Account Created Since:</label>
-                <input type="date" id="dataCreated" name="dataCreated" disabled>
+                <label for="lastLogin">Last Login:</label>
+                <input type="date" id="lastLogin" name="lastLogin" disabled>
             </div>
 
 
             <div class="data-box">
-                <label for="numOfProducts">Products Bought:</label>
-                <input type="number" id="discount" name="numOfProducts"  value="0" disabled>
+                <label for="purchasedListCount">Products Bought:</label>
+                <input type="number" id="purchasedListCount" name="purchasedListCount"  value="0" disabled>
             </div>
 
             <br>
@@ -43,18 +43,20 @@
         </form>
     </div>
     <div class="users-list-card">
-        <div class="user-item">
-            <div class="img-container">
-                <img src="src/profile-img.jpg" alt="...">
-            </div>
-            <div class="user-item-title">nasrallah</div>
-        </div>
-        <div class="user-item">
-            <div class="img-container">
-                <img src="src/profile-img.jpg" alt="...">
-            </div>
-            <div class="user-item-title">kareem</div>
-        </div>
+        <?php
+            include_once 'api/DBApi.php';
+            $users = DBApi::getAllUsers();
+            foreach($users as $user) {
+                $purchasedCount = count($user->purchasedList);
+                echo "
+                <div class='user-item' username='$user->username' email='$user->email' lastLogin='$user->lastLogin' purchasedListCount='$purchasedCount'>
+                    <div class='img-container'>
+                        <img src='src/profile-img.jpg' alt='...'>
+                    </div>
+                    <div class='user-item-title'>$user->username</div>
+                </div>";
+            }
+        ?>
 
     </div>
 </div>
@@ -65,15 +67,25 @@
     $(".user-item").click(function (){
         $(this).toggleClass("selected");
         $(this).siblings().removeClass("selected");
-        const addBtn = $(".deactive-btn");
+        const deactivateButton = $(".deactive-btn");
         if($(this).hasClass("selected")){
-            addBtn.prop("disabled", false);
+            deactivateButton.prop("disabled", false);
+            let form = document.forms[0];
+            Array.from(form.elements).forEach(e => {
+                if(e.type !== 'date') {
+                    e.value = $(this).attr(e.name);
+                } else {
+                    e.value = (new Date($(this).attr(e.name)* 1000)).toISOString().split('T')[0];
+                }
+            })
 
         }else{
-            addBtn.prop("disabled", true);
-
-
+            deactivateButton.prop("disabled", true);
+            document.forms[0].reset();
         }
+    })
+    $('#user-form').submit(function () {
+        event.preventDefault();
     })
 </script>
 

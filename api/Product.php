@@ -39,7 +39,7 @@ class Product {
     // ... (other methods remain unchanged)
 
     public function getJson(): array {
-        return [
+        $arr = [
             'title' => $this->title,
             'description' => $this->description,
             'price' => $this->price,
@@ -50,6 +50,9 @@ class Product {
             'stock' => $this->stock,
             'numSold' => $this->numSold,
         ];
+        return array_filter($arr, function ($value) {
+            return $value !== null;
+        });
     }
 
     public function setJson($document): void {

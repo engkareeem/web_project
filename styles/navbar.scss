@@ -105,6 +105,7 @@
 
 
 #notification-section {
+  pointer-events: none;
   position: fixed;
   z-index: 99;
   right: 0;

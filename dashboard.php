@@ -8,16 +8,35 @@
     <title>Dashboard</title>
 </head>
 <body>
-<?php include './components/admin-navbar.php' ?>
+<?php
+include_once 'api/DBApi.php';
+include './components/admin-navbar.php';
+$products = DBApi::getAllProducts();
+$totalProfit = 0;
+$productsNumber = count($products);
+$totalProductsStock = 0;
+$totalSoldProducts = 0;
+$usersCount = DBApi::getUsersCount();
+$adminsCount = DBApi::getUsersCount(true);
+if($usersCount instanceof APIResponse) $usersCount = 0;
+if($adminsCount instanceof APIResponse) $adminsCount = 0;
+echo $adminsCount;
+foreach ($products as $product) {
+    $totalProfit += $product->price * $product->numSold;
+    $totalProductsStock += $product->stock;
+    $totalSoldProducts += $product->numSold;
+}
+?>
+
 <div class="dashboard-title">Dashboard</div>
 <div class="dashboard-body">
-    <div id="total-profit">Profit Income: <br> <span id="total-profit-val">2,500$</span></div>
-    <div id="total-products">Total Number of Products: <br> <span id="total-products-val">7214</span></div>
-    <div id="stock-products">Number of Products In Stock: <br> <span id="stock-products-val">6251</span></div>
-    <div id="total-users">Users: <br> <span id="total-users-val">22</span></div>
-    <div id="sold-products">Sold Products: <br> <span id="sold-products-val">1523</span></div>
+    <div id="total-profit">Profit Income: <br> <span id="total-profit-val"><?php echo $totalProfit?>$</span></div>
+    <div id="total-products">Total Number of Products: <br> <span id="total-products-val"><?php echo $productsNumber?></span></div>
+    <div id="stock-products">Number of Products In Stock: <br> <span id="stock-products-val"><?php echo $totalProductsStock?></span></div>
+    <div id="total-users">Users: <br> <span id="total-users-val"><?php echo $usersCount?></span></div>
+    <div id="sold-products">Sold Products: <br> <span id="sold-products-val"><?php echo $totalSoldProducts?></span></div>
 
-    <div id="total-admins">Admins: <br> <span id="total-admins-val">14</span></div>
+    <div id="total-admins">Admins: <br> <span id="total-admins-val"><?php echo $adminsCount?></span></div>
 </div>
 
 <?php include './components/admin-footer.php' ?>

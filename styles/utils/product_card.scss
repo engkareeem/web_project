@@ -1,6 +1,7 @@
 .card-item {
   $border-radius-amount: 10px;
 
+  user-select: none;
   background-color: color-mix(in srgb, var(--primary), transparent 70%);
   position: relative;
   height: 100%;
@@ -20,6 +21,8 @@
     top: 0;
     position: absolute;
     object-fit: contain;
+    border-radius: $border-radius-amount;
+
   }
 
   &:hover {
@@ -63,7 +66,7 @@
   }
   .header {
     position: absolute;
-    background:  color-mix(in srgb, var(--primary), transparent 70%);
+    background:  color-mix(in srgb, var(--primary), transparent 30%);
     width: 100%;
     height: 25%;
     border-radius: 0 0 $border-radius-amount $border-radius-amount;
@@ -78,7 +81,7 @@
 
     .title {
       color: var(--text-primary-color);
-      font-weight: lighter;
+      font-weight: bold;
       flex: 1;
       float: left;
       text-align: left;
@@ -86,7 +89,7 @@
     }
 
     .price {
-      color: var(--text-secondary-color);
+      color: color-mix(in srgb, var(--text-primary-color), transparent 30%);
       font-weight: bold;
       float: right;
       padding-left: 5px;

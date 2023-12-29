@@ -3,11 +3,11 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <span class="icon material-icons close-button" data-bs-dismiss="modal">close</span>
+                <span class="icon fa-sharp fa-regular fa-xmark close-button" data-bs-dismiss="modal"></span>
             </div>
             <div class="modal-body">
                 <div class="body-header">
-                    <span class="icon material-icons person-icon">person</span>
+                    <span class="icon fa-solid fa-user person-icon"></span>
                     <span class="content-title">Log-In</span>
                 </div>
 
@@ -15,14 +15,14 @@
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
                         <div class="icon-text-field">
-                            <span class="icon material-icons text-field-icon">badge</span>
+                            <span class="icon fa-regular fa-circle-user text-field-icon"></span>
                             <input type="text" placeholder="Username" name="username" />
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <div class="icon-text-field">
-                            <span class="icon material-icons text-field-icon">lock</span>
+                            <span class="icon fa-duotone fa-lock text-field-icon"></span>
                             <input type="password" placeholder="Password" name="password">
                         </div>
                         <span class="response" style="color: #ff1f1f;font-size: 0.9em"></span>

@@ -9,7 +9,6 @@ $user = DBApi::ensureLogin();
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 <div id="nav">
@@ -20,25 +19,31 @@ $user = DBApi::ensureLogin();
         <a href="all_products.php" class="nav-item-link">Catalog</a>
         <?php
         if($isLogged) {
+            global $cartCount;
+            $cardCount = count(DBApi::getCart());
+            if($cardCount > 9) $cardCount = '9+';
             echo '<a href="profile-page.php" class="nav-item-link">Profile</a>';
             echo '<a href="shopping_cart.php" class="nav-item-link" id="cart-nav-btn">Cart
-            <span class="position-absolute start-100 translate-middle badge rounded-pill cart-count-Badge"> 9+ </span>
+            <span class="position-absolute start-100 translate-middle badge rounded-pill cart-count-Badge">$cartCount</span>
                 </a>';
         }
         ?>
 
     </div>
     <div id="nav-buttons">
-        <div class="cart-icon-wrapper">
-            <div class="icon material-icons" id="shopping-cart-icon">shopping_cart
-                <span class="position-absolute start-100 translate-middle badge rounded-pill cart-count-Badge"> 9+ </span>
-            </div>
-        </div>
+
 
         <?php
             if(!$isLogged) {
                 echo '<button type="button" data-bs-toggle="modal" data-bs-target="#login-modal">Log In</button>
                         <button type="button" data-bs-toggle="modal" data-bs-target="#signup-modal">Sign up</button>';
+            } else {
+                echo "
+                <div class='cart-icon-wrapper'>
+            <div class='icon fa-duotone fa-cart-shopping' id='shopping-cart-icon'>
+                <span class='position-absolute start-100 translate-middle badge rounded-pill cart-count-Badge'>$cardCount</span>
+            </div>
+        </div>";
             }
         ?>
 
@@ -79,21 +84,21 @@ $user = DBApi::ensureLogin();
         let notificationIcon, className;
         switch (msgType){
             case -1:
-                notificationIcon = 'warning'
+                notificationIcon = 'fa-sharp fa-triangle-exclamation'
                 className = 'error-notification';
                 break;
             case 0:
-                notificationIcon = 'error'
+                notificationIcon = 'fa-sharp fa-circle-exclamation'
                 className = 'warning-notification';
                 break;
             case 1:
-                notificationIcon = 'check_circle'
+                notificationIcon = 'fa-sharp fa-circle-check'
                 className = 'success-notification';
         }
         const notificationInstance = `
             <div class="notification ${className}">
-                <div class="notification-icon icon material-icons-round">
-                    ${notificationIcon}
+                <div class="notification-icon icon ${notificationIcon}">
+
                 </div>
                 <div class="notification-body">
                     <div class="notification-title">${msgTitle}</div>

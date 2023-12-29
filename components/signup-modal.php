@@ -2,11 +2,11 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <span class="icon material-icons close-button" data-bs-dismiss="modal">close</span>
+                <span class="icon close-button fa-sharp fa-regular fa-xmark" data-bs-dismiss="modal"></span>
             </div>
             <div class="modal-body">
                 <div class="body-header">
-                    <span  class="icon material-icons person-icon">person</span>
+                    <span  class="icon fa-solid fa-user person-icon"></span>
                     <span class="content-title">Sign-Up</span>
                 </div>
 
@@ -14,28 +14,28 @@
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
                         <div class="icon-text-field">
-                            <span class="icon material-icons text-field-icon">badge</span>
+                            <span class="icon fa-regular fa-circle-user text-field-icon"></span>
                             <input type="text" placeholder="Username" name="username" />
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email Address</label>
                         <div class="icon-text-field">
-                            <span class="icon material-icons text-field-icon">alternate_email</span>
+                            <span class="icon fa-solid fa-at text-field-icon"></span>
                             <input type="email" placeholder="Email" name="email" />
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <div class="icon-text-field">
-                            <span class="icon material-icons text-field-icon">lock</span>
+                            <span class="icon fa-duotone fa-lock text-field-icon"></span>
                             <input type="password" placeholder="Password" name="password">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="confirm-password" class="form-label">Confirm Password</label>
                         <div class="icon-text-field">
-                            <span class="icon material-icons text-field-icon">lock</span>
+                            <span class="icon fa-duotone fa-lock text-field-icon"></span>
                             <input type="password" placeholder="Confirm Password" name="confirm-password">
                         </div>
                         <span class="response" style="color: #ff1f1f;font-size: 0.9em"></span>

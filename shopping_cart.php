@@ -7,11 +7,16 @@
     <link rel="stylesheet" href="./styles/main.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <!--   <script src="https://unpkg.com/@rive-app/canvas@2.7.0"></script>-->
     <script src="js/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="styles/pages/shopping_cart.css">
+    <link rel="stylesheet" data-purpose="Layout StyleSheet" title="Web Awesome" href="/css/app-wa-9846671ed7c9dd69b10c93f6b04b31fe.css?vsn=d">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css">
 </head>
 <body>
 
@@ -52,7 +57,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 
 <div class="cart-view-container">
-    <div class="header" id="#cart-header"><div class="icon material-icons">shopping_cart</div>  Shopping Cart</div>
+    <div class="header" id="#cart-header"><div class="icon fa-solid fa-cart-shopping"></div>  Shopping Cart</div>
     <div class="cart-container" >
         <?php
         if(empty($cart)) {
@@ -63,7 +68,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET') {
             if($product->title === null) continue;
             $price = $product->price * $count;
             $totalItemsPrice += $price;
-            $totalPrice += $price - $price * $product->discount;
+            $totalPrice += $price - $price * ($product->discount/100);
             echo "
             <div class='cart-item' id='$product->id'>
     <div class='img-container'>
@@ -91,12 +96,10 @@ if($_SERVER['REQUEST_METHOD'] === 'GET') {
         </div>
     </div>
     <div class='icon-button'>
-        <div class='icon material-icons'>delete</div>
+        <div class='icon fa-solid fa-trash'></div>
     </div>
      ";
             echo "</div>";
-
-
         }
         ?>
     </div>
@@ -107,7 +110,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET') {
             <div class="items-price">Items price: <span class="amount"><?php echo $totalItemsPrice?></span>$</div>
             <div class="fees">Total fees: <span class="amount"><?php echo $fees?></span>$</div>
             <div class="discounts">Discounts: <span class="amount"><?php echo $totalItemsPrice - $totalPrice + $fees?></span>$</div>
-            <div class="total-price">Total Price <span class="amount"><?php echo $totalPrice?></span>$</div>
+            <div class="total-price">Total Price <span class="amount"><?php echo $totalItemsPrice > 0 ? $totalPrice: 0?></span>$</div>
         </div>
         <button class="btn btn-primary" onclick="checkout('<?php echo $_GET['product_id'] ?? '' ?>')" <?php echo empty($cart) ? 'disabled':''?>>Checkout</button>
 

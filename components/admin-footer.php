@@ -15,7 +15,6 @@
         margin: 20px auto 0;
         color: var(--text-primary-color);
         background-color: var(--accent);
-        position: absolute;
         bottom: 0;
 
     }
