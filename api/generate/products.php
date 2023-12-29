@@ -27,6 +27,7 @@ function generateProducts($filter=[],$order=[]):void {
                 <div class=\"header\">
                     <div class=\"title\">
                         $product->title
+     
                     </div>
                     <div class=\"price\">
                         $product->price$
@@ -38,6 +39,30 @@ function generateProducts($filter=[],$order=[]):void {
    
 </script>";
     echo $content;
+
+}
+
+function generateCustomProducts($products):void {
+
+    foreach($products as $productID) {
+        $product = DBApi::getProductByID($productID);
+        echo "<div class=\"card-item\" onclick=\"location.href = 'product_view.php?product_id=$productID'\">
+                <img src=\"api/getImage.php?id={$product->imageID}\" alt=\"image\">
+                <div class=\"actions\">
+                    <div class=\"icon material-icons\" onclick='fav_product(this,\"{$productID}\")'>favorite_outline</div>
+                    <div class=\"add-to-cart-button icon material-icons-outlined\" onclick='cart_product(this,\"$productID\")'>shopping_cart</div>
+                    
+                </div>
+                <div class=\"header\">
+                    <div class=\"title\">
+                        $product->title
+                    </div>
+                    <div class=\"price\">
+                        $product->price$
+                    </div>
+                </div>
+            </div>";
+    }
 }
 
 ?>

@@ -8,9 +8,12 @@
 </head>
 <body>
 <?php include_once 'api/DBApi.php';
+include_once 'api/generate/products.php';
 include './components/navbar.php';
 $user = DBApi::ensureLogin();
 $isLogged = $user->username !== null;
+$selectedCategory = "purchased";
+$list = [];
 if(!$isLogged) {
     echo "
         <script>
@@ -19,6 +22,19 @@ if(!$isLogged) {
             });
         </script>
     ";
+}
+
+if($_SERVER['REQUEST_METHOD'] == 'GET' ){
+
+    if(isset($_GET['tab'])){
+        $selectedCategory = $_GET['tab'];
+
+    }
+    if($selectedCategory == 'purchased'){
+        $list = $user->getPurchasedList();
+    }elseif($selectedCategory == 'favorites'){
+        $list = $user->getFavoritesList();
+    }
 }
 ?>
 
@@ -33,12 +49,15 @@ if(!$isLogged) {
     </div>
     <div class="data-card">
         <ul class="sub-nav">
-            <li class="active"><a href="#">Purchased</a></li>
-            <li><a href="#">Wishlist</a></li>
-            <li><a href="#">Favorites</a></li>
+            <li <?php echo 'class="' . ($selectedCategory == "purchased" ? 'active"' : '"') ?> ><a  id="purchased-tab">Purchased</a></li>
+            <li <?php echo 'class="' . ($selectedCategory == "favorites" ? 'active"' : '"') ?> ><a  id="favorites-tab" >Favorites</a></li>
         </ul>
         <div class="tabs-box">
-            <div class="products-grid-view"></div>
+            <div class="products-grid-view">
+                <?php
+                    generateCustomProducts($list);
+                ?>
+            </div>
         </div>
     </div>
 
@@ -49,6 +68,7 @@ if(!$isLogged) {
         width: 100%;
     }
 </style>
+
 
 <script src="js/jquery-3.7.1.min.js"></script>
 <script src="js/profile-page.js"></script>
@@ -69,6 +89,17 @@ if(!$isLogged) {
                }
            });
        });
+
+       $("#purchased-tab").click(() => {
+           let queryString = $.param({ tab: "purchased"});
+           window.location.href = "profile-page.php?" + queryString;
+       });
+
+        $("#favorites-tab").click(() => {
+            let queryString = $.param({ tab: "favorites"});
+            window.location.href = "profile-page.php?" + queryString;
+        });
+
     });
 </script>
 </body>
