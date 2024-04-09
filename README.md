@@ -32,7 +32,7 @@ Once the webstore is running, users can browse through the product catalog, appl
 
 ## Support
 
-For any questions or assistance, feel free to contact our support team at [support@example.com](mailto:support@example.com).
+For any questions or assistance, feel free to contact us
 
 ## Contributing
 
